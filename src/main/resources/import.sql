@@ -5,13 +5,7 @@
 -- insert into myentity (id, field) values(3, 'field-3');
 -- alter sequence myentity_seq restart with 4;
 
-
-INSERT INTO filme ( nome, genero, ator, idioma, legenda, duracao, idade) VALUES ('Harry Potter e a Pedra Filosofal', 'Fantasia', 'Daniel Radcliffe', 'Ingles', 'Portugues', '2h32min', 'Livre para todos os publicos');
-INSERT INTO filme ( nome, genero, ator, idioma, legenda, duracao, idade) VALUES ('Harry Potter e a Camara Secreta', 'Fantasia', 'Daniel Radcliffe', 'Ingles', 'Portugues', '2h30min', 'Livre para todos os publicos');
-INSERT INTO filme ( nome, genero, ator, idioma, legenda, duracao, idade) VALUES ('Harry Potter e o Prizoneiro de Azkaban', 'Fantasia', 'Daniel Radcliffe', 'Ingles', 'Portugues', '2h20min', '12 anos');
-INSERT INTO filme ( nome, genero, ator, idioma, legenda, duracao, idade) VALUES ('Harry Potter e o Calice de Fogo', 'Fantasia', 'Daniel Radcliffe', 'Ingles', 'Portugues', '2h35min', '12 anos');
-INSERT INTO filme ( nome, genero, ator, idioma, legenda, duracao, idade) VALUES ('Harry Potter e a Ordem da Fenix', 'Fantasia', 'Daniel Radcliffe', 'Ingles', 'Portugues', '2h18min', '12 anos');
-INSERT INTO filme ( nome, genero, ator, idioma, legenda, duracao, idade) VALUES ('Harry Potter e o Enigma do Principe', 'Fantasia', 'Daniel Radcliffe', 'Ingles', 'Portugues', '2h32m', '14 anos');
-INSERT INTO filme ( nome, genero, ator, idioma, legenda, duracao, idade) VALUES ('Harry Potter e as Reliquias da Morte: parte 1', 'Fantasia', 'Daniel Radcliffe', 'Ingles', 'Portugues', '2h25min', '14 anos');
-INSERT INTO filme ( nome, genero, ator, idioma, legenda, duracao, idade) VALUES ('Harry Potter e as Reliquias da Morte: parte 2', 'Fantasia', 'Daniel Radcliffe', 'Ingles', 'Portugues', '2h10min', '14 anos');
-
+INSERT INTO pod ( marca, puffs, valor, sabor) VALUES ('Ignite', '4000', '144,90', 'Icy Mint');
+INSERT INTO pod ( marca, puffs, valor, sabor) VALUES ('NikBar', '6000', '144,90', 'Strawberry Ice');
+INSERT INTO pod ( marca, puffs, valor, sabor) VALUES ('Elfbar', '5000', '110,00', 'Grape');
+INSERT INTO pod ( marca, puffs, valor, sabor) VALUES ('Geekbar', '5000', '109,90', 'Strawberry Mango');
