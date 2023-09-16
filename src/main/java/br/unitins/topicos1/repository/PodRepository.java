@@ -14,4 +14,8 @@ public class PodRepository implements PanacheRepository<Pod>
         return find("UPPER(nome) LIKE UPPER (?1)", "%"+nome+"%").list();
         
     }
+
+    public List<Pod> findByMarca(String marca) {
+        return null;
+    }
 }

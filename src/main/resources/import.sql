@@ -5,7 +5,11 @@
 -- insert into myentity (id, field) values(3, 'field-3');
 -- alter sequence myentity_seq restart with 4;
 
-INSERT INTO pod ( marca, puffs, valor, sabor) VALUES ('Ignite', '4000', '144,90', 'Icy Mint');
-INSERT INTO pod ( marca, puffs, valor, sabor) VALUES ('NikBar', '6000', '144,90', 'Strawberry Ice');
-INSERT INTO pod ( marca, puffs, valor, sabor) VALUES ('Elfbar', '5000', '110,00', 'Grape');
-INSERT INTO pod ( marca, puffs, valor, sabor) VALUES ('Geekbar', '5000', '109,90', 'Strawberry Mango');
+INSERT INTO pod ( marca, puffs, valor, sabor) 
+VALUES ('Ignite', '4000', '144,90', 'Icy Mint');
+INSERT INTO pod ( marca, puffs, valor, sabor) 
+VALUES ('NikBar', '6000', '144,90', 'Strawberry Ice');
+INSERT INTO pod ( marca, puffs, valor, sabor) 
+VALUES ('Elfbar', '5000', '110,00', 'Grape');
+INSERT INTO pod ( marca, puffs, valor, sabor) 
+VALUES ('Geekbar', '5000', '109,90', 'Strawberry Mango');

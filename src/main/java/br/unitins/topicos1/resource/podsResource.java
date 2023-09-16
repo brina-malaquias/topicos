@@ -1,8 +1,10 @@
 package br.unitins.topicos1.resource;
 
 import java.util.List;
+
+import br.unitins.topicos1.dto.PodDTO;
 import br.unitins.topicos1.model.Pod;
-import br.unitins.topicos1.repository.PodRepository;
+import br.unitins.topicos1.service.PodService;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.Consumes;
@@ -14,79 +16,59 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
-import jakarta.ws.rs.core.Response;
 
 
 @Path("/pod")
-
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class podsResource 
 {
 
-@Inject
-PodRepository repository;
+    @Inject
+    PodService service;
+
+    @POST 
+    @Transactional
+    public Pod insert(PodDTO dto)
+    {
+        return service.insert(dto);
+    }
 
     @GET
     public List<Pod> findAll() 
     {
-        return repository.listAll();
+        return service.findByAll();
     }
 
     @GET
     @Path("/{id}")
     public Pod findById(@PathParam("id") Long id)
     {
-        return repository.findById(id);
+        return service.findById(id);
     }
 
     @GET
     @Path("//search/nome/{nome}")
-    public List<Pod> findByNome(@PathParam("marca") String marca)
+    public List<Pod> findByMarca(@PathParam("marca") String marca)
     {
-        return repository.findByNome(marca);
-    }
-
-    @POST 
-    @Transactional
-    public Pod insert(Pod pod)
-    {
-        Pod novoPod = new Pod();
-        novoPod.setMarca(pod.getMarca());
-        novoPod.setPuffs(pod.getPuffs());
-        novoPod.setSabor(pod.getSabor());
-        novoPod.setValor(pod.getValor());
-
-        repository.persist(novoPod);
-
-        return novoPod;
+        return service.findByMarca(marca);
     }
     
     @PUT
     @Transactional
     @Path("/{id}")
-    public Response update(@PathParam("id") Long id, Pod pod) 
+    public Pod update(@PathParam("id") Long id, PodDTO dto) 
     {
-        Pod entity = repository.findById(id);
-        if (entity == null) 
-        {
-            return Response.status(Response.Status.NOT_FOUND).build();
-        }
-        entity.setMarca(pod.getMarca());
-        entity.setPuffs(pod.getPuffs());
-        entity.setSabor(pod.getSabor());
-        entity.setValor(pod.getValor());
-
-        repository.persist(entity);
-        return Response.ok(entity).build();
+        return service.update(dto, id);
     }
-
 
     @DELETE
     @Transactional
-    public void deleteById(Long id)
+    @Path("/{id}")
+    public void delete(@PathParam("id") Long id)
     {
-        repository.deleteById(id);
+        service.delete(id);
     }
+
 
 }

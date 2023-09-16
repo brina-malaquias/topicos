@@ -1,7 +1,8 @@
 package br.unitins.topicos1.model;
 
+import java.time.LocalDate;
 import java.util.List;
-
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,10 +16,18 @@ public class Pod
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(length = 60, nullable = false)
     private String marca;
+    @Column(length = 60, nullable = false)
     private String puffs;
+    @Column(length = 60, nullable = false)
     private String valor;
+    @Column(length = 20)
     private String sabor;
+
+    //@JsonIgnore
+    private LocalDate dataCadastro;
     
     public Long getId() 
     {
@@ -74,6 +83,16 @@ public class Pod
     public static List<Pod> listAll() 
     {
         return null;
+    }
+
+    public LocalDate getDataCadastro() 
+    {
+        return dataCadastro;
+    }
+
+    public void setDataCadastro(LocalDate dataCadastro) 
+    {
+        this.dataCadastro = dataCadastro;
     }
 
 }
