@@ -1,0 +1,113 @@
+@startuml Topicos1
+
+    Enum Usuario 
+    {
+        - CLIENTE: int
+        - ADMINISTRADOR: int
+    }
+
+    Class Cliente
+    {
+        - id: Long
+        - nome: String 
+        - idade: int
+        - cpf: String
+        - telefone: Telefone 
+        - endereco: Endereco 
+        - login: String
+        - senha: String
+    }
+
+    class Administrador
+    {
+        - id: Long
+        - nome: String 
+        - idade: int
+        - cpf: String
+        - telefone: Telefone 
+        - endereco: Endereco 
+        - login: String
+        - senha: String
+    }
+
+    class Endereco
+    {
+        - bairro: String
+        - quadra: String
+        - complemento: String
+        - lote: String
+    }
+
+    class Telefone 
+    {
+        - codigoArea: String
+        - numero: String
+    }
+
+    Class Pod
+    {
+        - id: Long
+        - puffs: String 
+        - marca: String
+        - sabor: String
+        - valor: Double
+    }
+
+    Class Biblioteca
+    {
+        - pods: List<Pod>
+    }
+
+    Class Carrinho
+    {
+        - id: Long
+        - cliente: Cliente
+        - List<Pod>: ArrayList
+        - quantidade: int
+        - valorTotal: Double
+    }
+    
+    Class Venda
+    {
+        - id: Long
+        - carrinho: Carrinho
+        - data: LocalDateTime
+        - cliente: Cliente
+        - formaPagamento: Pagamento
+        - situacaoVenda: SituacaoVenda
+        - pod: List<carrinho>
+    }
+
+    enum Pagamento
+    {
+        - DINHEIRO: Double
+        - PIX: Double
+        - CARTAOCREDITO: Double
+        - CARTAODEBITO: Double
+    }
+
+    Enum SituacaoVenda
+    {
+        - PROCESSANDO: string
+        - ENVIADO: String
+        - ENTREGE: String 
+    }
+
+    Usuario "1" --> "*" Cliente
+    Usuario "1"--> "*" Administrador
+    Cliente "1"--> "1" Telefone
+    Cliente "1"--> "1" Endereco
+    Administrador "1"--> "1" Telefone
+    Administrador "1"--> "1" Endereco
+
+    Biblioteca o-->Pod
+
+    Carrinho "*"--> "1" Cliente
+    Pod "*"--> "*"Carrinho
+
+    Cliente "*"--> "1"Venda
+    Carrinho "1"--> "1"Venda
+    SituacaoVenda "1" --> "*"Venda
+    Pagamento "1"--> "*"Venda
+
+@enduml

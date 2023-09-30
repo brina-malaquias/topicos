@@ -26,7 +26,6 @@ public class Pod
     @Column(length = 20)
     private String sabor;
 
-    //@JsonIgnore
     private LocalDate dataCadastro;
     
     public Long getId() 
@@ -68,7 +67,6 @@ public class Pod
     {
         this.valor = valor;
     }
-
     
    public String getSabor() 
     {

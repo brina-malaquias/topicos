@@ -2,10 +2,12 @@ package br.unitins.topicos1.service;
 
 import java.util.List;
 import br.unitins.topicos1.dto.PodDTO;
+import br.unitins.topicos1.dto.PodResponseDTO;
 import br.unitins.topicos1.model.Pod;
 import br.unitins.topicos1.repository.PodRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.transaction.Transactional;
+import jakarta.ws.rs.NotFoundException;
 import jakarta.inject.Inject;
 
 @ApplicationScoped
@@ -17,7 +19,7 @@ public class PodServiceImpl implements PodService
 
     @Override
     @Transactional
-    public Pod insert (PodDTO dto)
+    public PodResponseDTO insert (PodDTO dto)
 {
     Pod novoPod = new Pod();
     novoPod.setMarca(dto.getMarca());
@@ -28,49 +30,49 @@ public class PodServiceImpl implements PodService
     repository.persist(novoPod);
 
 
-    return novoPod;
+    return PodResponseDTO.valueOf(novoPod);
 }
 
     @Override
-    public Pod update(PodDTO dto, Long id) 
+    public PodResponseDTO update(PodDTO dto, Long id) 
     {
-        Pod podExistente = repository.findById(id);
-        if (podExistente != null) 
+        Pod pod = repository.findById(id);
+        if (pod != null) 
         {
-            podExistente.setMarca(dto.getMarca());
-            podExistente.setMarca(dto.getMarca());
-            podExistente.setPuffs(dto.getPuffs());
-            podExistente.setValor(dto.getValor());
-            podExistente.setSabor(dto.getSabor());
+            pod.setMarca(dto.getMarca());
+            pod.setMarca(dto.getMarca());
+            pod.setPuffs(dto.getPuffs());
+            pod.setValor(dto.getValor());
+            pod.setSabor(dto.getSabor());
         }
-        return podExistente;
+        return PodResponseDTO.valueOf(pod);
     }
 
     @Override
     public void delete(Long id) {
-        Pod pod = repository.findById(id);
-        if (pod != null) {
-            repository.delete(pod);
-        }
+        //Pod pod = repository.findById(id);
+        if (repository.deleteById(id))
+            throw new NotFoundException();
     }
 
     @Override
-    public Pod findById(Long id) 
+    public PodResponseDTO findById(Long id) 
     {
-        return repository.findById(id);
+        return PodResponseDTO.valueOf(repository.findById(id));
     }
 
     @Override
-    public List<Pod> findByMarca(String marca) 
+    public List<PodResponseDTO> findByMarca(String marca) 
     {
-        
-        return repository.findByMarca(marca);
+        return repository.findByMarca(marca).stream()
+            .map(e -> PodResponseDTO.valueOf(e)).toList();
     }
 
     @Override
-    public List<Pod> findByAll() 
+    public List<PodResponseDTO> findByAll() 
     {
-        return repository.listAll();
+        return repository.listAll().stream()
+            .map(e -> PodResponseDTO.valueOf(e)).toList();
     }
     }
 
