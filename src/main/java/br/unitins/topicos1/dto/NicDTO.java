@@ -2,54 +2,54 @@ package br.unitins.topicos1.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-//import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
-public class PodDTO 
+public class NicDTO 
 {
     @NotBlank(message = "O campo marca não pode ser nulo.")
     private final String marca;
-    @NotNull(message = "O campo puffs não pode ser nulo")
+
+    @NotNull(message = "O campo tipo não pode ser nulo")
     @Size(min = 3, max = 6)
-    private final  String puffs;
+    private final  String tipo;
+
     @NotNull(message = "O campo valor não pode ser nulo")
     private final String valor;
+    
     private final String sabor;
 
-    public PodDTO(String marca, String puffs, String valor, String sabor) 
+    public String getMarca() {
+        return marca;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public String getValor() {
+        return valor;
+    }
+
+    public String getSabor() {
+        return sabor;
+    }
+
+    public NicDTO(String marca, String tipo, String valor, String sabor) 
     {
         this.marca = marca;
-        this.puffs = puffs;
+        this.tipo = tipo;
         this.valor = valor;
         this.sabor = sabor;
     }
 
-    public String getMarca() 
-    {
-        return marca;
-    }
-    public String getPuffs() 
-    {
-        return puffs;
-    }
-    public String getValor() 
-    {
-        return valor;
-    }
-    public String getSabor() 
-    {
-        return sabor;
-    } 
-    
     @Override
-    public int hashCode()
-    {
+    public int hashCode() {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((marca == null) ? 0 : marca.hashCode());
-        result = prime * result + ((puffs == null) ? 0 : puffs.hashCode());
+        result = prime * result + ((tipo == null) ? 0 : tipo.hashCode());
         result = prime * result + ((valor == null) ? 0 : valor.hashCode());
-        result = prime * result + ((sabor == null) ? 0 : sabor.hashCode());      
+        result = prime * result + ((sabor == null) ? 0 : sabor.hashCode());
         return result;
     }
 
@@ -61,16 +61,16 @@ public class PodDTO
             return false;
         if (getClass() != obj.getClass())
             return false;
-        PodDTO other = (PodDTO) obj;
+        NicDTO other = (NicDTO) obj;
         if (marca == null) {
             if (other.marca != null)
                 return false;
         } else if (!marca.equals(other.marca))
             return false;
-        if (puffs == null) {
-            if (other.puffs != null)
+        if (tipo == null) {
+            if (other.tipo != null)
                 return false;
-        } else if (!puffs.equals(other.puffs))
+        } else if (!tipo.equals(other.tipo))
             return false;
         if (valor == null) {
             if (other.valor != null)
@@ -82,9 +82,10 @@ public class PodDTO
                 return false;
         } else if (!sabor.equals(other.sabor))
             return false;
-        
         return true;
     }
+
+    
 
     
 }

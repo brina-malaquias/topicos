@@ -4,6 +4,7 @@ package br.unitins.topicos1.model;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -12,15 +13,16 @@ import jakarta.persistence.JoinTable;
 import jakarta.persistence.OneToMany;
 
 
-public class Administrador 
+public class Administrador extends DefaultEntity
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    @Column(length = 60, nullable = false)
     private String nome;
+    @Column(length = 60, nullable = false)
     private String cpf;
-    
+    @Column(length = 60, nullable = false)
     private String idade;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
@@ -34,8 +36,10 @@ public class Administrador
         joinColumns = @JoinColumn (name = "id_administrador"),
         inverseJoinColumns = @JoinColumn (name = "id_endereco") )
     private List<Endereco> listaEndereco;
-
+    
+    @Column(length = 60, nullable = false)
     private String login;
+    @Column(length = 20)
     private String senha;
     
     public Long getId() {

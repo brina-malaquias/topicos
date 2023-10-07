@@ -10,29 +10,27 @@ public record ClienteResponseDTO
     String nome,
     String idade,
     String cpf,
-    String endereco,
+    List<EnderecoDTO> listaEndereco,
     String login,
     String senha,
     List<TelefoneDTO> listaTelefone
-) 
-{ 
-
-public static ClienteResponseDTO valueOf(Cliente cliente)
+)
 {
-    return new ClienteResponseDTO(
-        cliente.getId(), 
-        cliente.getNome(),
-        cliente.getIdade(),
-        cliente.getCpf(),
-        cliente.getLogin(),
-        cliente.getSenha(),
-        cliente.getListaTelefone()
+    public static ClienteResponseDTO valueOf(Cliente cliente)
+    {
+        return new ClienteResponseDTO(
+            cliente.getId(),
+            cliente.getNome(),
+            cliente.getIdade(),
+            cliente.getCpf(),
+            cliente.getListaEndereco()
             .stream()
-            .map(t -> TelefoneDTO.valueOf(t)).toList(),
-        cliente.getListaEndereco()
+            .map(e -> EnderecoDTO.valueOf(e)).toList(),
+            cliente.getLogin(),
+            cliente.getSenha(),
+            cliente.getListaTelefone()
             .stream()
-            .map(t -> EnderecoDTO.valueOf(t)).toList()
-    );
-}
-    
+            .map(t -> TelefoneDTO.valueOf(t)).toList()
+            );
+    }
 }

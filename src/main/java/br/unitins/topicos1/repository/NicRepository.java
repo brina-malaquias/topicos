@@ -2,12 +2,12 @@ package br.unitins.topicos1.repository;
 
 import java.util.List;
 
-import br.unitins.topicos1.model.Pod;
+import br.unitins.topicos1.model.Nic;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped
-public class PodRepository implements PanacheRepository<Pod>
+public class NicRepository implements PanacheRepository<Nic>
 {
     /*public List<Pod> findByNome(String nome)
     {
@@ -16,7 +16,8 @@ public class PodRepository implements PanacheRepository<Pod>
     }
     */
 
-    public List<Pod> findByMarca(String marca) {
+    public List<Nic> findByMarca(String marca) 
+    {
         return null;
     }
 }

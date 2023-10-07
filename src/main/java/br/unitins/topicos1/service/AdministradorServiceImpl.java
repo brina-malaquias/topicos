@@ -2,10 +2,13 @@ package br.unitins.topicos1.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import br.unitins.topicos1.dto.TelefoneDTO;
 import br.unitins.topicos1.dto.AdministradorDTO;
 import br.unitins.topicos1.dto.AdministradorResponseDTO;
+//import br.unitins.topicos1.dto.AdministradorDTO;
+//import br.unitins.topicos1.dto.AdministradorResponseDTO;
 import br.unitins.topicos1.dto.EnderecoDTO;
 import br.unitins.topicos1.model.Telefone;
 import br.unitins.topicos1.model.Administrador;
@@ -13,6 +16,10 @@ import br.unitins.topicos1.model.Endereco;
 import br.unitins.topicos1.repository.AdministradorRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.transaction.Transactional;
+import jakarta.validation.ConstraintViolation;
+import jakarta.validation.ConstraintViolationException;
+import jakarta.validation.Valid;
+import jakarta.validation.Validator;
 import jakarta.inject.Inject;
 
 @ApplicationScoped
@@ -21,22 +28,35 @@ public class AdministradorServiceImpl implements AdministradorService
     @Inject
     AdministradorRepository repository;
 
+    @Inject
+    Validator validator;
+
+    private void validar(AdministradorDTO usuarioDTO) throws ConstraintViolationException {
+        Set<ConstraintViolation<AdministradorDTO>> violations = validator.validate(usuarioDTO);
+
+        if (!violations.isEmpty())
+            throw new ConstraintViolationException(violations);
+    }
+
+
     @Override
     @Transactional
-    public AdministradorResponseDTO insertA(AdministradorDTO dto) 
-    {
+    public AdministradorResponseDTO insertA(@Valid AdministradorDTO dto) throws ConstraintViolationException {
+        
+        validar(dto);
+
         Administrador novoAdministrador = new Administrador();
-        novoAdministrador.setNome(dto.nome());
-        novoAdministrador.setIdade(dto.idade());
-        novoAdministrador.setCpf(dto.cpf());
+        novoAdministrador.setNome(dto.getNome());
+        novoAdministrador.setIdade(dto.getIdade());
+        novoAdministrador.setCpf(dto.getCpf());
 
-        novoAdministrador.setLogin(dto.login());
-        novoAdministrador.setSenha(dto.senha());
+        novoAdministrador.setLogin(dto.getLogin());
+        novoAdministrador.setSenha(dto.getSenha());
 
-        if (dto.listaTelefone() != null && 
-                    !dto.listaTelefone().isEmpty()){
+        if (dto.getListaTelefone() != null && 
+                    !dto.getListaTelefone().isEmpty()){
             novoAdministrador.setListaTelefone(new ArrayList<Telefone>());
-            for (TelefoneDTO tel : dto.listaTelefone()) {
+            for (TelefoneDTO tel : dto.getListaTelefone()) {
                 Telefone telefone = new Telefone();
                 telefone.setCodigoArea(tel.codigoArea());
                 telefone.setNumero(tel.numero());
@@ -44,10 +64,10 @@ public class AdministradorServiceImpl implements AdministradorService
             }
         }
         
-        if (dto.listaEndereco() != null && 
-                    !dto.listaEndereco().isEmpty()){
+        if (dto.getListaEndereco() != null && 
+                    !dto.getListaEndereco().isEmpty()){
             novoAdministrador.setListaEndereco(new ArrayList<Endereco>());
-            for (EnderecoDTO end : dto.listaEndereco()) {
+            for (EnderecoDTO end : dto.getListaEndereco()) {
                 Endereco endereco = new Endereco();
                 endereco.setBairro(end.bairro());
                 endereco.setQuadra(end.quadra());

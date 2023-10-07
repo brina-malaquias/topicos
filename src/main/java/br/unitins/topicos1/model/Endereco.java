@@ -1,18 +1,23 @@
 package br.unitins.topicos1.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
-public class Endereco 
+public class Endereco extends DefaultEntity
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(length = 60, nullable = false)
     private String bairro;
+    @Column(length = 7, nullable = false)
     private String quadra;
+    @Column(length = 60, nullable = false)
     private String complemento;
+    @Column(length = 20)
     private String n;
 
     public Long getId() 

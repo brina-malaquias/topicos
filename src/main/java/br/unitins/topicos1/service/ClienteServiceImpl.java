@@ -2,6 +2,7 @@ package br.unitins.topicos1.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import br.unitins.topicos1.dto.TelefoneDTO;
 import br.unitins.topicos1.dto.ClienteDTO;
@@ -13,6 +14,10 @@ import br.unitins.topicos1.model.Endereco;
 import br.unitins.topicos1.repository.ClienteRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.transaction.Transactional;
+import jakarta.validation.ConstraintViolation;
+import jakarta.validation.ConstraintViolationException;
+import jakarta.validation.Validator;
+import jakarta.validation.Valid;
 import jakarta.inject.Inject;
 
 @ApplicationScoped
@@ -21,22 +26,34 @@ public class ClienteServiceImpl implements ClienteService
     @Inject
     ClienteRepository repository;
 
+    @Inject
+    Validator validator;
+
+    private void validar(ClienteDTO usuarioDTO) throws ConstraintViolationException {
+        Set<ConstraintViolation<ClienteDTO>> violations = validator.validate(usuarioDTO);
+
+        if (!violations.isEmpty())
+            throw new ConstraintViolationException(violations);
+    }
+
     @Override
     @Transactional
-    public ClienteResponseDTO insertC(ClienteDTO dto) 
+    public ClienteResponseDTO insertC(@Valid ClienteDTO dto) throws ConstraintViolationException
     {
+        validar(dto);
+
         Cliente novoCliente = new Cliente();
-        novoCliente.setNome(dto.nome());
-        novoCliente.setIdade(dto.idade());
-        novoCliente.setCpf(dto.cpf());
+        novoCliente.setNome(dto.getNome());
+        novoCliente.setIdade(dto.getIdade());
+        novoCliente.setCpf(dto.getCpf());
 
-        novoCliente.setLogin(dto.login());
-        novoCliente.setSenha(dto.senha());
+        novoCliente.setLogin(dto.getLogin());
+        novoCliente.setSenha(dto.getSenha());
 
-        if (dto.listaTelefone() != null && 
-                    !dto.listaTelefone().isEmpty()){
+        if (dto.getListaTelefone() != null && 
+                    !dto.getListaTelefone().isEmpty()){
             novoCliente.setListaTelefone(new ArrayList<Telefone>());
-            for (TelefoneDTO tel : dto.listaTelefone()) {
+            for (TelefoneDTO tel : dto.getListaTelefone()) {
                 Telefone telefone = new Telefone();
                 telefone.setCodigoArea(tel.codigoArea());
                 telefone.setNumero(tel.numero());
@@ -44,10 +61,10 @@ public class ClienteServiceImpl implements ClienteService
             }
         }
 
-        if (dto.listaEndereco() != null && 
-                    !dto.listaEndereco().isEmpty()){
+        if (dto.getListaEndereco() != null && 
+                    !dto.getListaEndereco().isEmpty()){
             novoCliente.setListaEndereco(new ArrayList<Endereco>());
-            for (EnderecoDTO end : dto.listaEndereco()) {
+            for (EnderecoDTO end : dto.getListaEndereco()) {
                 Endereco endereco = new Endereco();
                 endereco.setBairro(end.bairro());
                 endereco.setQuadra(end.quadra());

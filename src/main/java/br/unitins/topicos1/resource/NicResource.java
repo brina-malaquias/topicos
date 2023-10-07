@@ -2,10 +2,10 @@ package br.unitins.topicos1.resource;
 
 //import java.util.List;
 
-import br.unitins.topicos1.dto.PodDTO;
-import br.unitins.topicos1.dto.PodResponseDTO;
+import br.unitins.topicos1.dto.NicDTO;
+import br.unitins.topicos1.dto.NicResponseDTO;
 //import br.unitins.topicos1.model.Pod;
-import br.unitins.topicos1.service.PodService;
+import br.unitins.topicos1.service.NicService;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
@@ -23,29 +23,29 @@ import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.Response.Status;
 
 
-@Path("/pod")
+@Path("/nic")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public class PodResource 
+public class NicResource 
 {
 
     @Inject
-    PodService service;
+    NicService service;
 
     @POST 
     @Transactional
-    public Response insert(@Valid PodDTO dto)
+    public Response insert(@Valid NicDTO dto)
     {
-        PodResponseDTO retorno = service.insert(dto);
+        NicResponseDTO retorno = service.insertN(dto);
         return Response.status(201).entity(retorno).build();
     }
 
     @PUT
     @Transactional
     @Path("/{id}")
-    public Response update(PodDTO dto, @PathParam("id") Long id) 
+    public Response update(NicDTO dto, @PathParam("id") Long id) 
     {
-        service.update(dto, id);
+        service.updateN(dto, id);
         return Response.status(Status.NO_CONTENT).build();
     }
 
@@ -54,7 +54,7 @@ public class PodResource
     @Path("/{id}")
     public Response delete(@PathParam("id") Long id)
     {
-        service.delete(id);
+        service.deleteN(id);
         return Response.status(Status.NO_CONTENT).build();
     }
 
@@ -77,10 +77,5 @@ public class PodResource
     {
         return Response.ok(service.findByMarca(marca)).build();
     }
-    
-
-
-
-
 
 }
