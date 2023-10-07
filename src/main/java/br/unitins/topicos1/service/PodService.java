@@ -4,7 +4,7 @@ import java.util.List;
 
 import br.unitins.topicos1.dto.PodDTO;
 import br.unitins.topicos1.dto.PodResponseDTO;
-import br.unitins.topicos1.model.Pod;
+//import br.unitins.topicos1.model.Pod;
 import jakarta.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped

@@ -9,7 +9,8 @@ public record PodResponseDTO
     String puffs,
     String valor,
     String sabor
-)  { 
+)  
+{ 
     public static PodResponseDTO valueOf (Pod pod)
     {
         return new PodResponseDTO

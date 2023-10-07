@@ -13,8 +13,18 @@ public class Endereco
     private String bairro;
     private String quadra;
     private String complemento;
-    private String numero;
+    private String n;
 
+    public Long getId() 
+    {
+        return id;
+    }
+
+    public void setId(Long id) 
+    {
+        this.id = id;
+    }
+    
     public String getBairro() 
     {
         return bairro;
@@ -30,9 +40,9 @@ public class Endereco
         return complemento;
     }
 
-    public String getNumero() 
+    public String getN() 
     {
-        return numero;
+        return n;
     }
 
     public void setBairro(String bairro) 
@@ -50,8 +60,9 @@ public class Endereco
         this.complemento = complemento;
     }
 
-    public void setNumero(String numero) 
+    public void setN(String n) 
     {
-        this.numero = numero;
+        this.n = n;
     }
+
 }

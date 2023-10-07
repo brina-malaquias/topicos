@@ -1,10 +1,10 @@
 package br.unitins.topicos1.resource;
 
-import java.util.List;
+//import java.util.List;
 
 import br.unitins.topicos1.dto.PodDTO;
 import br.unitins.topicos1.dto.PodResponseDTO;
-import br.unitins.topicos1.model.Pod;
+//import br.unitins.topicos1.model.Pod;
 import br.unitins.topicos1.service.PodService;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
@@ -12,7 +12,7 @@ import jakarta.validation.Valid;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
-import jakarta.ws.rs.NotFoundException;
+//import jakarta.ws.rs.NotFoundException;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
@@ -26,7 +26,7 @@ import jakarta.ws.rs.core.Response.Status;
 @Path("/pod")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public class podsResource 
+public class PodResource 
 {
 
     @Inject

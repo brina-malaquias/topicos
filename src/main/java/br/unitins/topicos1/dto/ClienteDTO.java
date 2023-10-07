@@ -2,13 +2,13 @@ package br.unitins.topicos1.dto;
 
 import java.util.List;
 
-public record UsuarioDTO
+public record ClienteDTO
 (
     String nome,
     String idade,
     String cpf,
-    List<TelefoneDTO> listaTelefones,
-    String endereco,
+    List<TelefoneDTO> listaTelefone,
+    List<EnderecoDTO> listaEndereco,
 
     String login,
     String senha

@@ -3,11 +3,13 @@ package br.unitins.topicos1.resource;
 import java.util.List;
 
 //import br.unitins.topicos1.dto.PodDTO;
-import br.unitins.topicos1.dto.UsuarioDTO;
-import br.unitins.topicos1.dto.UsuarioResponseDTO;
+import br.unitins.topicos1.dto.AdministradorDTO;
+import br.unitins.topicos1.dto.AdministradorResponseDTO;
+//import br.unitins.topicos1.dto.AdministradorDTO;
+//import br.unitins.topicos1.dto.AdministradorResponseDTO;
 //import br.unitins.topicos1.model.Pod;
 //import br.unitins.topicos1.model.Usuario;
-import br.unitins.topicos1.service.UsuarioService;
+import br.unitins.topicos1.service.AdministradorService;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.Consumes;
@@ -22,48 +24,48 @@ import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 
 
-@Path("/usuarios")
+@Path("/administradores")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public class UsuarioResource 
+public class AdministradorResource 
 {
 
     @Inject
-    UsuarioService service;
+    AdministradorService service;
 
     @POST
-    public UsuarioResponseDTO insert(UsuarioDTO dto) {
-        return service.insert(dto);
+    public AdministradorResponseDTO insert(AdministradorDTO dto) {
+        return service.insertA(dto);
     }
 
     @PUT
     @Transactional
     @Path("/{id}")
-    public UsuarioResponseDTO update(UsuarioDTO dto, @PathParam("id") Long id) {
-        return service.update(dto, id);
+    public AdministradorResponseDTO update(AdministradorDTO dto, @PathParam("id") Long id) {
+        return service.updateA(dto, id);
     }
 
     @DELETE
     @Transactional
     @Path("/{id}")
     public void delete(@PathParam("id") Long id) {
-        service.delete(id);
+        service.deleteA(id);
     }
 
     @GET
-    public List<UsuarioResponseDTO> findAll() {
+    public List<AdministradorResponseDTO> findAll() {
         return service.findByAll();
     }
 
     @GET
     @Path("/{id}")
-    public UsuarioResponseDTO findById(@PathParam("id") Long id) {
+    public AdministradorResponseDTO findById(@PathParam("id") Long id) {
         return service.findById(id);
     }
     
     @GET
     @Path("/search/nome/{nome}")
-    public List<UsuarioResponseDTO> findByNome(@PathParam("nome") String nome) {
+    public List<AdministradorResponseDTO> findByNome(@PathParam("nome") String nome) {
         return service.findByNome(nome);
     }
 }
