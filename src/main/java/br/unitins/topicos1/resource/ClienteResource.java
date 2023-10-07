@@ -67,3 +67,5 @@ public class ClienteResource
         return service.findByNome(nome);
     }
 }
+
+// Sabrina

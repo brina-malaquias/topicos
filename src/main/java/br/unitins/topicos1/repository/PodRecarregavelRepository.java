@@ -14,3 +14,5 @@ public class PodRecarregavelRepository implements PanacheRepository<PodRecarrega
         return null;
     }
 }
+
+// Sabrina

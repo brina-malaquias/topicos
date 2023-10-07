@@ -23,3 +23,5 @@ public interface AdministradorService
     public List<AdministradorResponseDTO> findByAll();
 
 }
+
+//sabrina

@@ -22,3 +22,5 @@ public interface PodRecarregavelService {
     public List<PodRecarregavelResponseDTO> findByAll();
 
 }
+
+// Sabrina

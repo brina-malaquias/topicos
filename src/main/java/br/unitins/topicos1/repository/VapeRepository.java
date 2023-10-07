@@ -14,3 +14,5 @@ public class VapeRepository implements PanacheRepository<Vape>
         return null;
     }
 }
+
+// Charles

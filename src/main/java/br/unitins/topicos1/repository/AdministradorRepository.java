@@ -23,3 +23,5 @@ public class AdministradorRepository implements PanacheRepository<Administrador>
         
     }
 }
+
+// Sabrina

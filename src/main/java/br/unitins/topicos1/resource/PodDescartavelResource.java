@@ -78,9 +78,6 @@ public class PodDescartavelResource
         return Response.ok(service.findByMarca(marca)).build();
     }
     
-
-
-
-
-
 }
+
+// Charles

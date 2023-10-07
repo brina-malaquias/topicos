@@ -22,3 +22,5 @@ public interface JuiceService {
     public List<JuiceResponseDTO> findByAll();
 
 }
+
+// Charles

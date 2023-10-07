@@ -22,3 +22,5 @@ public interface NicService {
     public List<NicResponseDTO> findByAll();
 
 }
+
+// Sabrina

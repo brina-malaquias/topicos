@@ -74,3 +74,5 @@ public class JuiceServiceImpl implements JuiceService
             .map(e -> JuiceResponseDTO.valueOf(e)).toList();
     }
 }
+
+// Charles

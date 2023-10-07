@@ -22,3 +22,5 @@ public interface PodDescartavelService {
     public List<PodDescartavelResponseDTO> findByAll();
 
 }
+
+// Charles

@@ -69,3 +69,5 @@ public class AdministradorResource
         return service.findByNome(nome);
     }
 }
+
+// Sabrina

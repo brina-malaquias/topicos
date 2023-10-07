@@ -73,4 +73,6 @@ public class VapeServiceImpl implements VapeService
         return repository.listAll().stream()
             .map(e -> VapeResponseDTO.valueOf(e)).toList();
     }
-    }
+}
+
+// Charles

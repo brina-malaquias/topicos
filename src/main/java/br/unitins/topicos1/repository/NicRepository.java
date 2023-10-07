@@ -21,3 +21,5 @@ public class NicRepository implements PanacheRepository<Nic>
         return null;
     }
 }
+
+// Sabrina
