@@ -28,23 +28,10 @@ public class AdministradorServiceImpl implements AdministradorService
     @Inject
     AdministradorRepository repository;
 
-    @Inject
-    Validator validator;
-
-    private void validar(AdministradorDTO usuarioDTO) throws ConstraintViolationException {
-        Set<ConstraintViolation<AdministradorDTO>> violations = validator.validate(usuarioDTO);
-
-        if (!violations.isEmpty())
-            throw new ConstraintViolationException(violations);
-    }
-
-
     @Override
     @Transactional
-    public AdministradorResponseDTO insertA(@Valid AdministradorDTO dto) throws ConstraintViolationException {
+    public AdministradorResponseDTO insertA(AdministradorDTO dto) throws ConstraintViolationException {
         
-        validar(dto);
-
         Administrador novoAdministrador = new Administrador();
         novoAdministrador.setNome(dto.getNome());
         novoAdministrador.setIdade(dto.getIdade());

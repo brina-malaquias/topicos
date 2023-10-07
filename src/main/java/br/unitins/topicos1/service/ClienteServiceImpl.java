@@ -26,21 +26,11 @@ public class ClienteServiceImpl implements ClienteService
     @Inject
     ClienteRepository repository;
 
-    @Inject
-    Validator validator;
-
-    private void validar(ClienteDTO usuarioDTO) throws ConstraintViolationException {
-        Set<ConstraintViolation<ClienteDTO>> violations = validator.validate(usuarioDTO);
-
-        if (!violations.isEmpty())
-            throw new ConstraintViolationException(violations);
-    }
-
     @Override
     @Transactional
-    public ClienteResponseDTO insertC(@Valid ClienteDTO dto) throws ConstraintViolationException
+    public ClienteResponseDTO insertC(ClienteDTO dto) throws ConstraintViolationException
     {
-        validar(dto);
+
 
         Cliente novoCliente = new Cliente();
         novoCliente.setNome(dto.getNome());

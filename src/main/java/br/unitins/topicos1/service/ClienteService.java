@@ -9,7 +9,7 @@ import br.unitins.topicos1.dto.ClienteDTO;
 
 public interface ClienteService 
 {
-    public ClienteResponseDTO insertC(@Valid ClienteDTO dto) throws ConstraintViolationException;
+    public ClienteResponseDTO insertC(ClienteDTO dto) throws ConstraintViolationException;
 
     public ClienteResponseDTO updateC(ClienteDTO dto, Long id);
 

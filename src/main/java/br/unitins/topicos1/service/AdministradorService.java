@@ -10,7 +10,7 @@ import br.unitins.topicos1.dto.AdministradorDTO;
 
 public interface AdministradorService 
 {
-    public AdministradorResponseDTO insertA(@Valid AdministradorDTO dto) throws ConstraintViolationException;
+    public AdministradorResponseDTO insertA( AdministradorDTO dto) throws ConstraintViolationException;
 
     public AdministradorResponseDTO updateA(AdministradorDTO dto, Long id);
 

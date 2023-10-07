@@ -21,14 +21,15 @@ VALUES ('Vaporesso', 'Xros 3', 'Prata', '205,50');
 INSERT INTO PodRecarregavel (marca, modelo, cor, valor)
 VALUES ('Voopoo', 'Drag Nano 2', 'Preto', '237,90');
 
-INSERT INTO nic ( marca, tipo, valor, sabor)
+/* INSERT INTO Nic ( marca, tipo, valor, sabor)
 VALUES ('Salt Magna', 'Atabacada', '68,90', 'Morango com Tabaco');
-INSERT INTO nic ( marca, tipo, valor, sabor)
+INSERT INTO Nic ( marca, tipo, valor, sabor)
 VALUES ('BLVK', 'Mentolada', '101,30', 'Hortela e baunilha');
-INSERT INTO nic ( marca, tipo, valor, sabor)
+INSERT INTO Nic ( marca, tipo, valor, sabor)
 VALUES ('Caravela ', 'Ice', '45,90', 'Melancia com banana');
-INSERT INTO nic ( marca, tipo, valor, sabor)
+INSERT INTO Nic ( marca, tipo, valor, sabor)
 VALUES ('Naked', 'Frutada', '93,70', 'Morango com Kiwi');
+*/
 
 INSERT INTO vape (marca, modelo, cor, valor)
 VALUES ('Vaporesso', 'GTX GO 80', 'Azul', '179,90');
@@ -37,13 +38,14 @@ VALUES ('Uwell', 'Koko Tenet', 'Cromado rosa', '309,80');
 INSERT INTO vape (marca, modelo, cor, valor)
 VALUES ('Voopoo', 'Drag X Plus', 'Preto', '290,10');
 
-INSERT INTO juice ( marca, tipo, valor, sabor)
+/*
+INSERT INTO Juice ( marca, tipo, valor, sabor)
 VALUES ('Black Note', 'Atabacada', '97,80', 'Tabaco');
-INSERT INTO juice ( marca, tipo, valor, sabor)
+INSERT INTO Juice ( marca, tipo, valor, sabor)
 VALUES ('LS Juices', 'Ice', '25,90', 'Melancia Ice');
-INSERT INTO juice ( marca, tipo, valor, sabor)
+INSERT INTO Juice ( marca, tipo, valor, sabor)
 VALUES ('Chilly Beats', 'Tropical', '98,20', 'Abacaxi com uva');
-INSERT INTO juice ( marca, tipo, valor, sabor)
+INSERT INTO Juice ( marca, tipo, valor, sabor)
 VALUES ('Joyetech ', 'Mentolada', '112,50', 'Hortela com menta');
-
+*/
 
